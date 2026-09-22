@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Jana's Birthday Celebration · Sunday 25.10.26 · 2 PM – 10 PM · YSY, Frankfurter Allee 23, 10247 Berlin">
+<meta property="og:title" content="Jana's Birthday Celebration">
+<meta property="og:description" content="Sunday 25.10.26 · 2 PM – 10 PM · YSY Berlin · Music, drinks, snacks & beste Menschen">
+<meta property="og:image" content="og.jpg">
+<link rel="icon" href="smiley.png">
+<title>Jana's Birthday Celebration</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap">
+<style>
+:root{
+  --red:#942120; --red-deep:#5e1010; --terra:#D87046; --acid:#DFFF00; --cream:#F4EEE4; --cream-70:rgba(244,238,228,.7);
+  --font:"Fira Code","SFMono-Regular",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--red-deep);color:var(--cream);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.stage{position:relative;min-height:100%;overflow:hidden;isolation:isolate}
+.bg{position:fixed;inset:0;z-index:-2;background:url(bg-v.jpg) center/cover no-repeat;filter:saturate(1.1) contrast(1.05)}
+.tint{position:fixed;inset:0;z-index:-1;background:
+  linear-gradient(180deg, rgba(120,20,18,.82) 0%, rgba(120,20,18,.66) 40%, rgba(120,20,18,.5) 70%, rgba(94,16,16,.8) 100%)}
+.grain{position:fixed;inset:0;z-index:-1;opacity:.14;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+.dots{position:fixed;inset:0;z-index:-1;opacity:.14;pointer-events:none;
+  background-image:radial-gradient(circle, rgba(244,238,228,.9) 1.3px, transparent 1.5px);background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 55%);mask-image:linear-gradient(180deg,#000 0%,transparent 55%)}
+
+.wrap{max-width:640px;margin:0 auto;padding-inline:20px;padding-block:40px 56px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+.kicker{font-size:13px;font-weight:500;letter-spacing:.34em;color:var(--acid);text-transform:uppercase;display:flex;gap:14px;align-items:center;padding-top:12px}
+.kicker:before{content:"";width:34px;height:2px;background:var(--acid);flex:none}
+.smiley{width:96px;height:auto;transform:rotate(9deg);filter:drop-shadow(0 10px 22px rgba(40,5,5,.5));flex:none}
+@media (min-width:480px){.smiley{width:120px}}
+
+.head{display:grid;gap:clamp(12px,3vw,20px);margin-bottom:34px}
+.head img{display:block;height:auto;max-width:100%}
+.head .l1{width:54%}.head .l2{width:73%}.head .l3{width:100%}
+
+.when{display:flex;flex-wrap:wrap;margin-bottom:26px}
+.when .box{border:2px solid var(--cream);padding:14px 18px;font-size:clamp(20px,5.6vw,30px);font-weight:700;line-height:1;flex:1 1 220px}
+.when .box.y{background:var(--acid);color:var(--red);border-color:var(--acid)}
+.when small{display:block;font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;opacity:.85;margin-bottom:9px}
+
+.tags{font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.tags span{color:var(--acid);margin:0 8px}
+.vibe{max-width:34ch;opacity:.94;margin-bottom:34px}
+
+.rsvp{border:2px solid var(--cream);padding:22px 20px 24px;margin-bottom:34px;background:rgba(94,16,16,.35);backdrop-filter:blur(2px)}
+.rsvp h2{font-size:13px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--acid);margin:0 0 18px}
+.field{display:grid;gap:8px;margin-bottom:18px}
+.field label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;opacity:.9}
+.field input[type=text],.field textarea,.field select{width:100%;background:rgba(244,238,228,.08);border:1px solid rgba(244,238,228,.5);color:var(--cream);font:inherit;font-size:16px;padding:12px 14px;border-radius:0;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--acid);box-shadow:0 0 0 2px rgba(223,255,0,.35)}
+.field textarea{min-height:84px;resize:vertical}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choices input{position:absolute;opacity:0;pointer-events:none}
+.choices label{cursor:pointer;border:2px solid var(--cream);padding:10px 16px;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;flex:1 1 120px;text-align:center;opacity:1}
+.choices input:checked + label{background:var(--acid);color:var(--red);border-color:var(--acid)}
+.choices input:focus-visible + label{box-shadow:0 0 0 3px rgba(223,255,0,.5)}
+.send{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--cream);color:var(--red);font:inherit;font-weight:700;font-size:15px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--acid)}
+.btn:focus-visible{outline:2px solid var(--acid);outline-offset:3px}
+.hint{font-size:13px;opacity:.8;margin-top:12px}
+.copy{background:transparent;border:1px solid rgba(244,238,228,.6);color:var(--cream);font:inherit;font-size:12px;letter-spacing:.15em;text-transform:uppercase;padding:8px 12px;cursor:pointer;margin-top:10px}
+
+.thanks{border:2px solid var(--cream);padding:34px 20px 30px;margin-bottom:34px;background:rgba(94,16,16,.35);text-align:center;display:grid;justify-items:center;gap:14px}
+.thanks .face{width:min(260px,70%);height:auto;border-radius:50%;box-shadow:0 0 0 10px rgba(148,33,32,.6),0 30px 60px rgba(40,5,5,.5)}
+.thanks h2{font-size:clamp(28px,8vw,40px);font-weight:700;letter-spacing:.04em;margin:10px 0 0;color:var(--acid)}
+.thanks p{margin:0;max-width:30ch}
+.thanks .tiny{font-size:13px;opacity:.85;margin-top:8px}
+.rule{height:1px;background:rgba(244,238,228,.45);margin:0 0 26px}
+.venue{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.venue img{width:150px;height:auto;filter:drop-shadow(0 6px 22px rgba(40,5,5,.55))}
+.venue .txt{font-size:15px;line-height:1.5;text-align:right;flex:1 1 200px}
+.venue .txt b{display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--acid);margin-bottom:6px;font-weight:500}
+.venue a{color:var(--cream)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.links a{color:var(--cream);text-decoration:none;font-size:12px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(244,238,228,.6);padding:9px 14px}
+.links a:hover{border-color:var(--acid);color:var(--acid)}
+.foot{margin-top:40px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.6}
+@media (prefers-reduced-motion:no-preference){.smiley{animation:bob 6s ease-in-out infinite}@keyframes bob{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(6deg) translateY(-6px)}}}
+</style>
+</head>
+<body>
+
+
+<div class="stage">
+<div class="bg"></div><div class="tint"></div><div class="dots"></div><div class="grain"></div>
+<main class="wrap">
+  <div class="top">
+    <div class="kicker">You are invited</div>
+    <img class="smiley" src="smiley.png" alt="">
+  </div>
+
+  <h1 class="head" aria-label="Jana's Birthday Celebration">
+    <img class="l1" src="head1.png" alt="Jana's">
+    <img class="l2" src="head2.png" alt="Birthday">
+    <img class="l3" src="head3.png" alt="Celebration">
+  </h1>
+
+  <div class="when">
+    <div class="box y"><small>Date</small>SUN 25.10.26</div>
+    <div class="box"><small>Time</small>2 PM – 10 PM</div>
+  </div>
+
+  <div class="tags">Music <span>·</span> Drinks <span>·</span> Snacks <span>·</span> Beste Menschen</div>
+  <p class="vibe">Easy vibes. Happy to host you there and spend some time with you.</p>
+
+  <section class="rsvp" aria-labelledby="rsvp-h">
+    <h2 id="rsvp-h">RSVP</h2>
+    <form id="rsvp-form" novalidate>
+      <div class="field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" autocomplete="name" placeholder="Who's coming?">
+      </div>
+      <div class="field">
+        <span class="field-label" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;opacity:.9">Are you in?</span>
+        <div class="choices">
+          <input type="radio" name="coming" id="c-yes" value="Yes, I'm in" checked><label for="c-yes">Yes, I'm in</label>
+          <input type="radio" name="coming" id="c-maybe" value="Maybe"><label for="c-maybe">Maybe</label>
+          <input type="radio" name="coming" id="c-no" value="Sadly no"><label for="c-no">Sadly no</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="note">Anything I should know?</label>
+        <textarea id="note" name="note" placeholder="Arriving late, allergies, a song request…"></textarea>
+      </div>
+      <div class="send">
+        <button type="submit" class="btn" id="send-btn">Send RSVP</button>
+      </div>
+      <p class="hint" id="hint">Your answer goes straight to Jana. No account needed.</p>
+    </form>
+  </section>
+
+  <section class="thanks" id="thanks" hidden aria-live="polite">
+    <img class="face" src="portrait.png" alt="Jana">
+    <h2 id="thanks-h">Thank you!</h2>
+    <p id="thanks-p">Can't wait to see you on 25.10.</p>
+    <div class="tiny" id="fallback" hidden>Hmm, sending didn't go through — <a id="finish" href="#" target="_blank" rel="noopener" style="color:#DFFF00">tap here to finish your RSVP</a> (your answers are pre-filled).</div>
+        <button type="button" class="copy" id="again">Change my answer</button>
+  </section>
+
+  <div class="rule"></div>
+  <div class="venue">
+    <img src="ysy-white.png" alt="YSY">
+    <div class="txt"><b>Where</b><a href="https://maps.google.com/?q=Frankfurter+Allee+23,+10247+Berlin" target="_blank" rel="noopener">YSY · Frankfurter Allee 23<br>10247 Berlin</a></div>
+  </div>
+  <div class="links">
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Jana%27s%20Birthday%20Celebration&dates=20261025T130000Z/20261025T210000Z&location=YSY%2C%20Frankfurter%20Allee%2023%2C%2010247%20Berlin&details=Music%20%C2%B7%20Drinks%20%C2%B7%20Snacks%20%C2%B7%20Beste%20Menschen" target="_blank" rel="noopener">Save in Google Calendar</a>
+    <a href="https://maps.google.com/?q=Frankfurter+Allee+23,+10247+Berlin" target="_blank" rel="noopener">Open in maps</a>
+  </div>
+  <p class="foot">Sunday 25.10.26 · 2 PM – 10 PM · YSY Berlin</p>
+</main>
+</div>
+
+<script>
+(function(){
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd66VatoSfFcvBlgUeRla8c9sw85ZGSgS3uQ8Dv6Q8cz8VYDA/';
+  var F = { name: 'entry.572386946', coming: 'entry.737749928', note: 'entry.218333115' };
+
+  function answers(){
+    return {
+      name: document.getElementById('name').value.trim(),
+      coming: document.querySelector('input[name=coming]:checked').value,
+      note: document.getElementById('note').value.trim()
+    };
+  }
+  function params(a){
+    var p = new URLSearchParams();
+    p.set(F.name, a.name); p.set(F.coming, a.coming); if (a.note) p.set(F.note, a.note);
+    return p;
+  }
+  function prefilled(a){
+    var p = params(a); p.set('usp', 'pp_url');
+    return FORM + 'viewform?' + p.toString();
+  }
+  function submitDirect(a){
+    return fetch(FORM + 'formResponse', { method: 'POST', mode: 'no-cors', body: params(a), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+  }
+  function showThanks(a, viaFallback){
+    var first = a.name.split(/\s+/)[0];
+    document.getElementById('thanks-h').textContent = 'Thank you, ' + first + '!';
+    document.getElementById('thanks-p').textContent = a.coming === 'Sadly no' ? 'Sad to miss you — but thank you for letting me know.' : (a.coming === 'Maybe' ? 'Hope it works out — would love to see you on 25.10.' : "Can't wait to see you on 25.10. at YSY.");
+    document.getElementById('fallback').hidden = !viaFallback;
+    document.querySelector('.rsvp').hidden = true;
+    var t = document.getElementById('thanks'); t.hidden = false; t.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  var form = document.getElementById('rsvp-form');
+  var btn = document.getElementById('send-btn');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name');
+    if (!name.value.trim()) { name.focus(); name.placeholder = 'Please add your name first'; return; }
+    var a = answers();
+    btn.disabled = true; btn.textContent = 'Sending…';
+    submitDirect(a).then(function(){
+      btn.disabled = false; btn.textContent = 'Send RSVP';
+      showThanks(a, false);
+    }).catch(function(){
+      // offline or blocked: hand over to the pre-filled form instead
+      btn.disabled = false; btn.textContent = 'Send RSVP';
+      document.getElementById('finish').href = prefilled(a);
+      showThanks(a, true);
+    });
+  });
+  document.getElementById('again').addEventListener('click', function(){
+    document.getElementById('thanks').hidden = true; document.querySelector('.rsvp').hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>
